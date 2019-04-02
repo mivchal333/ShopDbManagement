@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Products</title>
+    <link href="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.7/css/bootstrap.min.css"
+          th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}"
+          rel="stylesheet" media="screen"/>
+
+    <script src="http://cdn.jsdelivr.net/webjars/jquery/3.2.1/jquery.min.js"
+            th:src="@{/webjars/jquery/3.2.1/jquery.min.js}"></script>
+
+    <link href="../static/css/spring-core.css"
+          th:href="@{css/spring-core.css}" rel="stylesheet" media="screen"/>
+</head>
+<body>
+<div class="container">
+    <h1>Product info:</h1>
+    <div>
+        <table class="table table-striped">
+            <tr>
+                <th>Id</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Phone Number</th>
+                <th>Address</th>
+                <th>City</th>
+                <th>State</th>
+                <th>Zipcode</th>
+            </tr>
+            <tr>
+                <td th:text="${customer.id}">1</td>
+                <td th:text="${customer.firstName}">Lorem</td>
+                <td th:text="${customer.lastName}">Loem</td>
+                <td th:text="${customer.email}">maial@aka.pl</td>
+                <td th:text="${customer.phoneNumber}">342432</td>
+                <td>
+                    <p th:text="${customer.addressLineOne}">Lublin Glowny</p>
+                    <p th:text="${customer.adressLineTwo}">Konwaliowa 12</p>
+                </td>
+                <td th:text="${customer.city}">Wroclaw</td>
+                <td th:text="${customer.state}">Super</td>
+                <td th:text="${customer.zipCode}">12-123</td>
+            </tr>
+        </table>
+    </div>
+    <div>
+        <a th:href="${'/customers'}">Back to list</a>
+    </div>
+</div>
+</body>
+</html>
