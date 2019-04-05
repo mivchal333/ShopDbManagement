@@ -1,4 +1,4 @@
-package pl.sda.trade;
+package pl.sda.shop;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

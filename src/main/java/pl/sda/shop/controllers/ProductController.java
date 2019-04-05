@@ -1,4 +1,4 @@
-package pl.sda.trade.controllers;
+package pl.sda.shop.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -6,8 +6,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import pl.sda.trade.domain.Product;
-import pl.sda.trade.service.ProductService;
+import pl.sda.shop.domain.Product;
+import pl.sda.shop.service.ProductService;
 
 @Controller
 public class ProductController {

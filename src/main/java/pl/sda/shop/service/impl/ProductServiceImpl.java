@@ -1,8 +1,8 @@
-package pl.sda.trade.service.impl;
+package pl.sda.shop.service.impl;
 
 import org.springframework.stereotype.Service;
-import pl.sda.trade.domain.Product;
-import pl.sda.trade.service.ProductService;
+import pl.sda.shop.domain.Product;
+import pl.sda.shop.service.ProductService;
 
 import java.math.BigDecimal;
 import java.util.*;

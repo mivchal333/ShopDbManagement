@@ -1,4 +1,4 @@
-package pl.sda.trade.controllers;
+package pl.sda.shop.controllers;
 
 public class CustomerRestController {
 }

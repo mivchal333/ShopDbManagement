@@ -1,6 +1,6 @@
-package pl.sda.trade.service;
+package pl.sda.shop.service;
 
-import pl.sda.trade.domain.Customer;
+import pl.sda.shop.domain.Customer;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package pl.sda.trade.domain;
+package pl.sda.shop.domain;
 
 public class Customer {
     private Integer id;

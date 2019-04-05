@@ -1,6 +1,6 @@
-package pl.sda.trade.service;
+package pl.sda.shop.service;
 
-import pl.sda.trade.domain.Product;
+import pl.sda.shop.domain.Product;
 
 import java.util.List;
 

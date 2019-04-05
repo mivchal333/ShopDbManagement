@@ -1,8 +1,8 @@
-package pl.sda.trade.service.impl;
+package pl.sda.shop.service.impl;
 
 import org.springframework.stereotype.Service;
-import pl.sda.trade.domain.Customer;
-import pl.sda.trade.service.CustomerService;
+import pl.sda.shop.domain.Customer;
+import pl.sda.shop.service.CustomerService;
 
 import java.util.*;
 
