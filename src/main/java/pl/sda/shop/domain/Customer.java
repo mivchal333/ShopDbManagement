@@ -1,13 +1,22 @@
 package pl.sda.shop.domain;
 
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Customer {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String firstName;
     private String lastName;
     private String email;
     private String phoneNumber;
     private String addressLineOne;
-    private String adressLineTwo;
+    private String addressLineTwo;
     private String city;
     private String state;
     private String zipCode;
@@ -60,12 +69,12 @@ public class Customer {
         this.addressLineOne = addressLineOne;
     }
 
-    public String getAdressLineTwo() {
-        return adressLineTwo;
+    public String getAddressLineTwo() {
+        return addressLineTwo;
     }
 
-    public void setAdressLineTwo(String adressLineTwo) {
-        this.adressLineTwo = adressLineTwo;
+    public void setAddressLineTwo(String addressLineTwo) {
+        this.addressLineTwo = addressLineTwo;
     }
 
     public String getCity() {

@@ -38,7 +38,7 @@
                 <td th:text="${customer.phoneNumber}">342432</td>
                 <td>
                     <p th:text="${customer.addressLineOne}">Lublin Glowny</p>
-                    <p th:text="${customer.adressLineTwo}">Konwaliowa 12</p>
+                    <p th:text="${customer.addressLineTwo}">Konwaliowa 12</p>
                 </td>
                 <td th:text="${customer.city}">Wroclaw</td>
                 <td th:text="${customer.state}">Super</td>
@@ -47,7 +47,7 @@
         </table>
     </div>
     <div>
-        <a th:href="${'/customers'}">Back to list</a>
+        <a th:href="${'/customers'}" class="btn btn-default">Back to list</a>
     </div>
 </div>
 </body>

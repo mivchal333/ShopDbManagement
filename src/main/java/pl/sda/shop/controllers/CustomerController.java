@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import pl.sda.shop.domain.Customer;
 import pl.sda.shop.service.CustomerService;
 
+import java.util.Optional;
+
 @Controller
 public class CustomerController {
     @Autowired
@@ -23,8 +25,10 @@ public class CustomerController {
 
     @RequestMapping("/customers/{id}")
     public String showCustomer(@PathVariable Integer id, Model model) {
-        Customer customer = customerService.getCustomerById(id);
-        model.addAttribute("customer", customer);
+        Optional<Customer> customerOpt = customerService.getCustomerById(id);
+        if (customerOpt.isPresent()) {
+            model.addAttribute("customer", customerOpt.get());
+        }
         return "customer";
     }
 
@@ -44,6 +48,12 @@ public class CustomerController {
     public String deleteCustomer(@PathVariable Integer id) {
         customerService.deleteCustomer(id);
         return "redirect:/customers";
+    }
+
+    @RequestMapping(value = "/customers/new")
+    public String addCustomer(Model model) {
+        model.addAttribute("customer", new Customer());
+        return "customerForm";
     }
 
 }

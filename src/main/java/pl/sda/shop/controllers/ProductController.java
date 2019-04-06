@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import pl.sda.shop.domain.Product;
 import pl.sda.shop.service.ProductService;
 
+import java.util.Optional;
+
 @Controller
 public class ProductController {
     private ProductService productService;
@@ -26,8 +28,11 @@ public class ProductController {
 
     @RequestMapping("/products/{id}")
     public String showProduct(@PathVariable Integer id, Model model) {
-        Product product = productService.getProductById(id);
-        model.addAttribute("product", product);
+        Optional<Product> productOpt = productService.getProductById(id);
+        if (productOpt.isPresent()) {
+            model.addAttribute("product", productOpt.get());
+        }
+
         return "product";
     }
 
@@ -47,5 +52,10 @@ public class ProductController {
     public String deleteProduct(@PathVariable Integer id) {
         productService.deleteProduct(id);
         return "redirect:/products";
+    }
+    @RequestMapping(value = "/products/new")
+    public String addProduct(Model model){
+        model.addAttribute("product", new Product());
+        return "productForm";
     }
 }

@@ -1,67 +1,47 @@
 package pl.sda.shop.service.impl;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pl.sda.shop.domain.Customer;
+import pl.sda.shop.repository.CustomerRepository;
 import pl.sda.shop.service.CustomerService;
 
-import java.util.*;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CustomerServiceImpl implements CustomerService {
 
-    private Map<Integer, Customer> customers;
+    @Autowired
+    CustomerRepository repository;
 
     @Override
     public List<Customer> listAllCustomers() {
-        return new ArrayList<>(customers.values());
+        LinkedList<Customer> customers = new LinkedList<>();
+        Iterable<Customer> customersIt = repository.findAll();
+        customersIt.forEach(customers::add);
+        return customers;
     }
 
     @Override
-    public Customer getCustomerById(Integer id) {
-        return customers.get(id);
+    public Optional<Customer> getCustomerById(Integer id) {
+        return repository.findById(id);
     }
 
     @Override
     public Customer saveOrUpdateCustomer(Customer customer) {
         if (customer != null) {
-            if (customer.getId() == null) {
-                customer.setId(getNextKey());
-            }
-            customers.put(customer.getId(), customer);
+            return repository.save(customer);
         } else {
             throw new RuntimeException("Customer can't be null");
         }
-        return getCustomerById(customer.getId());
     }
 
-    private Integer getNextKey() {
-        return Collections.max(customers.keySet()) + 1;
-    }
 
     @Override
     public void deleteCustomer(Integer id) {
-        customers.remove(id);
+        repository.deleteById(id);
     }
 
-    public CustomerServiceImpl() {
-        customers = new HashMap<>();
-        loadCustomers();
-    }
-
-    private void loadCustomers() {
-        for (int i = 0; i < 5; i++) {
-            Customer c = new Customer();
-            c.setId(i);
-            c.setFirstName("Adam");
-            c.setLastName("Nowacki");
-            c.setAddressLineOne("Domieszkowa");
-            c.setAdressLineTwo("12/1");
-            c.setCity("Krakow");
-            c.setEmail("adam@nowacki.pl");
-            c.setPhoneNumber("123123123");
-            c.setState("Main");
-            c.setZipCode("12-315");
-            customers.put(i, c);
-        }
-    }
 }

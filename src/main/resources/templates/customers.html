@@ -44,7 +44,9 @@
         </table>
     </div>
     <div>
-        <a th:href="${'/'}">Back main page</a>
+
+        <a th:href="${'/'}" class="btn btn-default">Back main page</a>
+        <a th:href="${'/customers/new'}">New Customer</a>
     </div>
 </div>
 <div th:if="${#lists.isEmpty(customers)}">

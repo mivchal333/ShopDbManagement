@@ -37,8 +37,9 @@
             </tr>
         </table>
     </div>
-    <div>
-        <a th:href="${'/'}">Back main page</a>
+    <div class="btn-group btn-group-toggle" data-toggle="buttons">
+        <a th:href="${'/'}" class="btn btn-secondary active">Back main page</a>
+        <a th:href="${'/customers/new'}" class="btn btn-secondary active">New Customer</a>
     </div>
 </div>
 <div th:if="${#lists.isEmpty(products)}">
