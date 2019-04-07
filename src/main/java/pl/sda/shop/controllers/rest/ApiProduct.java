@@ -25,11 +25,11 @@ public class ApiProduct {
     }
 
     @RequestMapping("/{id}")
-    public ResponseEntity getProductById(@PathVariable Integer id) {
+    public ResponseEntity<Object> getProductById(@PathVariable Integer id) {
         Optional<Product> productOpt = service.getProductById(id);
         if (productOpt.isPresent()) {
-            return new ResponseEntity(productOpt.get(), HttpStatus.I_AM_A_TEAPOT);
-        } else return new ResponseEntity("Product not found", HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(productOpt.get(), HttpStatus.OK);
+        } else return new ResponseEntity<>("404 NotFound", HttpStatus.NOT_FOUND);
     }
 
 }
