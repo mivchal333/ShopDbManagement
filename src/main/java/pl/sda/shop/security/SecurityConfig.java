@@ -17,8 +17,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/",
                         "/templates/**",
                         "/static/**",
-                        "/webjars/**",
-                        "/api/**").permitAll()
+                        "/webjars/**").permitAll()
                 .antMatchers("/customers/**","/customer/**")
                 .hasRole("CUSTOMER")
                 .antMatchers("/products/**","/product/**")
@@ -37,7 +36,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .exceptionHandling()
                 .accessDeniedPage("/")
                 .and()
-                .headers().frameOptions().disable();
+                .headers().frameOptions().disable().and().httpBasic();
     }
 
     @Override

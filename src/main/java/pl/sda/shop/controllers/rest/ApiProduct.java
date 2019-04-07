@@ -2,10 +2,9 @@ package pl.sda.shop.controllers.rest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import pl.sda.shop.domain.Product;
 import pl.sda.shop.service.ProductService;
 
@@ -19,7 +18,7 @@ public class ApiProduct {
     @Autowired
     ProductService service;
 
-    @RequestMapping(value = "/all")
+    @RequestMapping(value = "/")
     public List<Product> getAllProducts() {
         return service.listAllProducts();
     }
@@ -30,6 +29,12 @@ public class ApiProduct {
         if (productOpt.isPresent()) {
             return new ResponseEntity<>(productOpt.get(), HttpStatus.OK);
         } else return new ResponseEntity<>("404 NotFound", HttpStatus.NOT_FOUND);
+    }
+
+    @RequestMapping(value = "/new", consumes = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.POST)
+    @ResponseStatus(value = HttpStatus.OK)
+    public void addProduct(@RequestBody Product product) {
+        service.saveOrUpdateProduct(product);
     }
 
 }
