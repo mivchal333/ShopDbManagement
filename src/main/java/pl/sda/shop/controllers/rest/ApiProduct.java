@@ -9,13 +9,15 @@ import pl.sda.shop.service.ProductService;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/api/")
+@RequestMapping(value = "/api/product")
 public class ApiProduct {
+
     @Autowired
     ProductService service;
 
-    @RequestMapping("all/")
+    @RequestMapping(value = "/all")
     public List<Product> getAllProducts(){
+        System.out.println(service.listAllProducts());
         return service.listAllProducts();
     }
 
